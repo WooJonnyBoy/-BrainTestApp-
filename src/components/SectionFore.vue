@@ -15,6 +15,7 @@
         любовного.
       </div>
       <button class="test">ПОЙТИ ТЕСТ</button>
+      <div class="year"></div>
     </div>
   </section>
 </template>
@@ -92,5 +93,16 @@
   border: 1px solid white;
   background-color: transparent;
   color: white;
+}
+
+.year {
+  position: absolute;
+  width: 100px;
+  height: 50px;   
+  background: url(../assets/img/year.png) no-repeat;
+  background-position: center;
+  background-size: 60% auto; 
+  bottom: 0;
+
 }
 </style>

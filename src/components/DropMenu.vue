@@ -16,7 +16,7 @@
 .dropMenu {
   position: absolute;
   inset: 0 0 0 0;
-  width: 100dvw;
+  width: 100%;
   height: 100dvh;
   background-color: #272727;
   color: white;
@@ -36,6 +36,11 @@ ul {
 
 li {
   list-style: none;
+  cursor: pointer;
+}
+
+li:hover {
+  color: var(--text-yellow);
 }
 
 .close {
