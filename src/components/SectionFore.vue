@@ -2,7 +2,7 @@
 </script>
 
 <template>
-  <section>
+  <section id="end">
     <div class="sectionFore">
       <div class="first_block">
         Прохождение теста займет у вас не более <span>12 минут</span>, а его
@@ -108,4 +108,5 @@
   bottom: 0;
 
 }
+
 </style>

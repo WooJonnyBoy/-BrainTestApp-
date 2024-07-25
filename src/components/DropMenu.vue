@@ -6,7 +6,7 @@
     <div @click="$emit('close', '')" class="close"></div>
     <ul>
       <li @click="$emit('onMainPage', '')">ГЛАВНАЯ</li>
-      <li>ИНФОРМАЦИЯ О ТЕСТЕ</li>
+      <a href="#end"><li>ИНФОРМАЦИЯ О ТЕСТЕ</li></a>
       <li @click="$emit('openTest', '')">ПРОЙТИ ТЕСТ</li>
     </ul>
   </div>
@@ -50,5 +50,10 @@ li:hover {
   top: 1rem;
   right: 1rem;
   background: url(../assets/img/close.png) no-repeat;
+}
+
+a {
+  text-decoration: none;
+  color: white;
 }
 </style>

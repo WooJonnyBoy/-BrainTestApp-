@@ -32,9 +32,17 @@ const next = () => {
           <h4 class="quest">
             {{ questions[pageNumber.questionPage].question }}
           </h4>
-          <div v-if="questions[pageNumber.questionPage].img" class="img_wrap">
+          <div
+            v-if="questions[pageNumber.questionPage].img"
+            :class="[
+              questions[pageNumber.questionPage].type == 4
+                ? 'img_spiner'
+                : 'img_wrap',
+            ]"
+          >
             <img :src="questions[pageNumber.questionPage].img" alt="" />
           </div>
+          
           <ul v-if="questions[pageNumber.questionPage].type == 1" class="ul">
             <li
               v-for="item in questions[pageNumber.questionPage].answers"
@@ -66,8 +74,11 @@ const next = () => {
               ></div>
             </li>
           </ul>
-          <hr v-if="questions[pageNumber.questionPage].type == 3">
-          <ul v-if="questions[pageNumber.questionPage].type == 3" class="ul_img">
+          <hr v-if="questions[pageNumber.questionPage].type == 3" />
+          <ul
+            v-if="questions[pageNumber.questionPage].type == 3"
+            class="ul_img"
+          >
             <li
               v-for="item in questions[pageNumber.questionPage].answers"
               v-bind:key="item"
@@ -81,7 +92,15 @@ const next = () => {
             </li>
           </ul>
         </div>
+        <div
+            v-if="questions[pageNumber.questionPage].type == 4"
+            class="sp_uns"
+          >
+            {{ questions[pageNumber.questionPage].answers }}
+          </div>
+
         <button
+          v-if="questions[pageNumber.questionPage].type !== 4"
           :class="[checked ? 'button_active' : 'button']"
           @click="next()"
           :disabled="checked ? disabled : ''"
@@ -105,7 +124,7 @@ const next = () => {
 }
 
 .header::before {
-  content: '';
+  content: "";
   width: 2.2rem;
   aspect-ratio: 1;
   position: absolute;
@@ -251,8 +270,30 @@ const next = () => {
 }
 
 img {
-  width: 50%;
+  width: 100%;
   height: fit-content;
+}
+
+.img_spiner {
+  margin-top: 3rem;
+  width: 4rem;
+  animation: rotate 1s infinite linear;
+}
+
+@keyframes rotate {
+  0% {
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.sp_uns {
+  max-width: 400px;
+  color: white;
+  margin:  3rem 3rem 10rem 3rem;
+  font-size: 1.1rem;
+  overflow: hidden;
 }
 
 hr {
@@ -264,6 +305,7 @@ hr {
 }
 
 .img_wrap {
+  width: 50%;
   display: flex;
   justify-content: center;
 }
@@ -323,5 +365,4 @@ li {
   align-items: center;
   border: 5px solid orange;
 }
-
 </style>
