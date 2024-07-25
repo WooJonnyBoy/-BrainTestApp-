@@ -5,13 +5,13 @@
   <section>
     <div class="section_two">
       <div class="section_text">
-        <p>
+        <div class="text_first">
           Профессиональный IQ-тест позволяет не только определить коэффициент
           вашего интеллекта,
-        </p>
-        <p>
+        </div>
+        <div class="text_second">
           но и выработать список рекомендаций для повышения этого показателя.
-        </p>
+        </div>
       </div>
     </div>
   </section>
@@ -31,6 +31,7 @@
 }
 
 .section_text {
+  position: relative;
   padding: 2rem;
   width: 100%;
   height: 100%;
@@ -49,24 +50,27 @@
   text-wrap: balance;
 }
 
-.section_text::before,
-.section_text::after {
+.text_first, .text_second {
+  position: relative;
+}
+
+.text_first::before, .text_second::after {
   content: "";
   position: absolute;
   width: 25px;
   height: 25px;
 }
 
-.section_text::before {
-  top: 2rem;
-  left: 1.5rem;
+.text_first::before {
+  top: -2rem;
+  left: 0;
   background: url(../assets/img/“.png) no-repeat;
   background-size: 100%;
 }
 
-.section_text::after {
-  bottom: 3rem;
-  right: 2rem;
+.text_second::after {
+  bottom: -2rem;
+  right: 0;
   background: url(../assets/img/quot.png) no-repeat;
   background-size: 100%;
 }

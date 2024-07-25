@@ -14,7 +14,7 @@
         <strong>изменить все аспекты своей жизни:</strong> от финансового до
         любовного.
       </div>
-      <button class="test">ПОЙТИ ТЕСТ</button>
+      <button class="test" @click="$emit('openTest', '')">ПОЙТИ ТЕСТ</button>
       <div class="year"></div>
     </div>
   </section>
@@ -26,8 +26,9 @@
   padding: 1rem;
   width: 100%;
   height: 100dvh;
-  background: url(../assets/img/rain_bk2.png) no-repeat;
-  background-size: 100% auto;
+  background: url(../assets/img/rain.png) no-repeat;
+  background-size: cover;
+  background-position: 0 auto;
   font-family: "Merriweather", serif;
   font-weight: 400;
   font-style: normal;
@@ -42,7 +43,7 @@
 .sectionFore::before {
   content: "";
   position: absolute;
-  width: 100%;
+  width: 50dvw;
   height: 40dvh;
   background: url(../assets/img/lighleft.png) no-repeat;
   background-size: auto 40dvh;
@@ -82,6 +83,8 @@
 }
 
 .test {
+  position: relative;
+  z-index: 20;
   width: fit-content;
   margin-bottom: 1.5rem;
   padding: 1rem 3rem;

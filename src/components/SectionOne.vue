@@ -9,11 +9,11 @@
         <h1>ТЕСЕ НА ОПРЕДЕЛЕНИЕ IQ</h1>
       </div>
       <div class="bottom_block">
-        <button class="test">ПРОЙТИ ТЕСТ</button>
+        <button class="test" @click="$emit('openTest', '')">ПРОЙТИ ТЕСТ</button>
         <p>и получите рекомендации</p>
         <p>по развитию своего интеллекта</p>
         <p>и улучшению финансового благосостояния и личной жизни</p>
-        <button class="arrow"></button>
+        <button class="arrow" ></button>
         <p>Прдробнее</p>
       </div>
     </div>
@@ -34,7 +34,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
-  background: url(../assets/img/rain_bk.png) no-repeat;
+  background: url(../assets/img/rain_bk.png);
   background-size: 60dvh auto;
   background-position: center 20%;
 }

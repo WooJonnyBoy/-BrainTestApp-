@@ -11,7 +11,7 @@
           </p>
         </div>
         <img class="img" src="../assets/img/brain.png" alt="">
-        <button class="test">ПОЙТИ ТЕСТ</button>
+        <button class="test" @click="$emit('openTest', '')">ПОЙТИ ТЕСТ</button>
       </div>
 </template>
 
@@ -28,7 +28,7 @@
 }
 
 .text {
-  font-size: 1.4rem;
+  font-size: 1.3rem;
 }
 
 .img {

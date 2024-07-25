@@ -5,9 +5,9 @@
   <div class="dropMenu">
     <div @click="$emit('close', '')" class="close"></div>
     <ul>
-      <li>ГЛАВНАЯ</li>
+      <li @click="$emit('onMainPage', '')">ГЛАВНАЯ</li>
       <li>ИНФОРМАЦИЯ О ТЕСТЕ</li>
-      <li>ПРОЙТИ ТЕСТ</li>
+      <li @click="$emit('openTest', '')">ПРОЙТИ ТЕСТ</li>
     </ul>
   </div>
 </template>
