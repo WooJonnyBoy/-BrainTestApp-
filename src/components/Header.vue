@@ -1,9 +1,10 @@
 <script setup>
+import { store } from '../store/store.js'
 </script>
 
 <template>
   <div class="header">
-    <div class="menu" @click="$emit('open', '')"></div>
+    <div class="menu" @click="store.openCloseMenu()"></div>
   </div>
 </template>
 

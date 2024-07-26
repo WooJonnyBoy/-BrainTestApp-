@@ -1,13 +1,14 @@
 <script setup>
+import {store} from '../store/store.js'
 </script>
 
 <template>
   <div class="dropMenu">
-    <div @click="$emit('close', '')" class="close"></div>
+    <div @click="store.openCloseMenu()" class="close"></div>
     <ul>
-      <li @click="$emit('onMainPage', '')">ГЛАВНАЯ</li>
-      <a href="#end"><li>ИНФОРМАЦИЯ О ТЕСТЕ</li></a>
-      <li @click="$emit('openTest', '')">ПРОЙТИ ТЕСТ</li>
+      <li @click="store.onMain()">ГЛАВНАЯ</li>
+      <a href="#end"><li @click="store.closeEndPage()">ИНФОРМАЦИЯ О ТЕСТЕ</li></a>
+      <li @click="store.openTest()">ПРОЙТИ ТЕСТ</li>
     </ul>
   </div>
 </template>

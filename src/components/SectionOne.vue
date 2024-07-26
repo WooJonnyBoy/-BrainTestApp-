@@ -1,23 +1,22 @@
 <script setup>
+import { store } from "../store/store.js";
 </script>
 
 <template>
-  <section>
-    <div class="section">
+    <section class="section">
       <div class="top_block">
         <p>Пройдите точный и быстрый</p>
         <h1>ТЕСЕ НА ОПРЕДЕЛЕНИЕ IQ</h1>
       </div>
       <div class="bottom_block">
-        <button class="test" @click="$emit('openTest', '')">ПРОЙТИ ТЕСТ</button>
+        <button class="test" @click="store.openTest()">ПРОЙТИ ТЕСТ</button>
         <p>и получите рекомендации</p>
         <p>по развитию своего интеллекта</p>
         <p>и улучшению финансового благосостояния и личной жизни</p>
-        <button class="arrow" ></button>
+        <button class="arrow"></button>
         <p>Прдробнее</p>
       </div>
-    </div>
-  </section>
+    </section>
 </template>
 
 <style scoped>
@@ -42,18 +41,20 @@
 .top_block {
   width: 100%;
   font-size: 1.5rem;
-  & p {
-    text-align: center;
-    color: white;
-  }
-  & h1 {
-    margin-top: 1rem;
-    color: var(--text-yellow);
-    font-size: 30px;
-    text-align: center;
-    text-wrap: balance;
-    font-size: 2.5rem;
-  }
+}
+
+.top_block p {
+  text-align: center;
+  color: white;
+}
+
+h1 {
+  margin-top: 1rem;
+  color: var(--text-yellow);
+  font-size: 30px;
+  text-align: center;
+  text-wrap: balance;
+  font-size: 2.5rem;
 }
 
 .bottom_block {
@@ -73,18 +74,19 @@
   & :nth-child(6) {
     font-size: 0.8rem;
   }
-  & .test {
-    margin-bottom: 1.5rem;
-    padding: 1rem 3rem;
-    background-color: var(--text-yellow);
-    border-radius: 50px;
-    font-family: "Merriweather", serif;
-    font-weight: 700;
-    font-style: normal;
-    font-size: 1.2rem;
-    color: black;
-    border: none;
-  }
+}
+
+.test {
+  margin-bottom: 1.5rem;
+  padding: 1rem 3rem;
+  background-color: var(--text-yellow);
+  border-radius: 50px;
+  font-family: "Merriweather", serif;
+  font-weight: 700;
+  font-style: normal;
+  font-size: 1.2rem;
+  color: black;
+  border: none;
 }
 
 .arrow {
@@ -118,5 +120,4 @@
     margin: 0;
   }
 }
-
 </style>

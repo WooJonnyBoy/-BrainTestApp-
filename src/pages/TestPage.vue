@@ -1,5 +1,5 @@
 <script setup>
-import { pageNumber, questions } from "../store/store.js";
+import { store, questions } from "../store/store.js";
 
 import { ref } from "vue";
 
@@ -10,13 +10,12 @@ const setCheck = (val) => {
 };
 
 const next = () => {
-  pageNumber.nextPage();
+  store.nextPage();
   checked.value = "";
 };
 </script>
 
 <template>
-  <section>
     <div class="bg">
       <div class="testPage">
         <div class="header">ТЕСТ НА ОПРЕДЕЛЕНИЕ IQ</div>
@@ -24,28 +23,28 @@ const next = () => {
           <div
             :style="{
               width:
-                (100 / questions.length) * (pageNumber.questionPage + 1) + '%',
+                (100 / questions.length) * (store.questionPage + 1) + '%',
             }"
           ></div>
         </div>
         <div class="block_questions">
           <h4 class="quest">
-            {{ questions[pageNumber.questionPage].question }}
+            {{ questions[store.questionPage].question }}
           </h4>
           <div
-            v-if="questions[pageNumber.questionPage].img"
+            v-if="questions[store.questionPage].img"
             :class="[
-              questions[pageNumber.questionPage].type == 4
+              questions[store.questionPage].type == 4
                 ? 'img_spiner'
                 : 'img_wrap',
             ]"
           >
-            <img :src="questions[pageNumber.questionPage].img" alt="" />
+            <img :src="questions[store.questionPage].img" alt="" />
           </div>
           
-          <ul v-if="questions[pageNumber.questionPage].type == 1" class="ul">
+          <ul v-if="questions[store.questionPage].type == 1" class="ul">
             <li
-              v-for="item in questions[pageNumber.questionPage].answers"
+              v-for="item in questions[store.questionPage].answers"
               v-bind:key="item"
             >
               <div
@@ -60,11 +59,11 @@ const next = () => {
             </li>
           </ul>
           <ul
-            v-if="questions[pageNumber.questionPage].type == 2"
+            v-if="questions[store.questionPage].type == 2"
             class="ul_color"
           >
             <li
-              v-for="item in questions[pageNumber.questionPage].answers"
+              v-for="item in questions[store.questionPage].answers"
               v-bind:key="item"
             >
               <div
@@ -74,13 +73,13 @@ const next = () => {
               ></div>
             </li>
           </ul>
-          <hr v-if="questions[pageNumber.questionPage].type == 3" />
+          <hr v-if="questions[store.questionPage].type == 3" />
           <ul
-            v-if="questions[pageNumber.questionPage].type == 3"
+            v-if="questions[store.questionPage].type == 3"
             class="ul_img"
           >
             <li
-              v-for="item in questions[pageNumber.questionPage].answers"
+              v-for="item in questions[store.questionPage].answers"
               v-bind:key="item"
             >
               <div
@@ -91,16 +90,16 @@ const next = () => {
               </div>
             </li>
           </ul>
-        </div>
-        <div
-            v-if="questions[pageNumber.questionPage].type == 4"
+          <div
+            v-if="questions[store.questionPage].type == 4"
             class="sp_uns"
           >
-            {{ questions[pageNumber.questionPage].answers }}
+            {{ questions[store.questionPage].answers }}
           </div>
-
+        </div>
+        <div></div>
         <button
-          v-if="questions[pageNumber.questionPage].type !== 4"
+          v-if="questions[store.questionPage].type !== 4"
           :class="[checked ? 'button_active' : 'button']"
           @click="next()"
           :disabled="checked ? disabled : ''"
@@ -109,7 +108,6 @@ const next = () => {
         </button>
       </div>
     </div>
-  </section>
 </template>
 
 <style scoped>
@@ -291,13 +289,13 @@ img {
 .sp_uns {
   max-width: 400px;
   color: white;
-  margin:  3rem 3rem 10rem 3rem;
-  font-size: 1.1rem;
+  margin:  5rem 1rem;
+  font-size: 1.2rem;
   overflow: hidden;
+  text-align: center;
 }
 
 hr {
-  margin: 1rem 0 0 0;
   width: 100%;
   height: 4px;
   background-color: #f2f3f33a;
@@ -305,6 +303,7 @@ hr {
 }
 
 .img_wrap {
+  margin-bottom: 1rem;
   width: 50%;
   display: flex;
   justify-content: center;

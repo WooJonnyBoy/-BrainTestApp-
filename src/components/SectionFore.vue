@@ -1,4 +1,5 @@
 <script setup>
+import { store } from "../store/store.js";
 </script>
 
 <template>
@@ -14,7 +15,7 @@
         <strong>изменить все аспекты своей жизни:</strong> от финансового до
         любовного.
       </div>
-      <button class="test" @click="$emit('openTest', '')">ПОЙТИ ТЕСТ</button>
+      <button class="test" @click="store.openTest()">ПОЙТИ ТЕСТ</button>
       <div class="year"></div>
     </div>
   </section>
@@ -101,12 +102,10 @@
 .year {
   position: absolute;
   width: 100px;
-  height: 50px;   
+  height: 50px;
   background: url(../assets/img/year.png) no-repeat;
   background-position: center;
-  background-size: 60% auto; 
+  background-size: 60% auto;
   bottom: 0;
-
 }
-
 </style>

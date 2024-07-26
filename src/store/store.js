@@ -4,11 +4,73 @@ import img10 from '../assets/img/question10.png'
 import img8 from '../assets/img/question8.png'
 import spiner from '../assets/img/spiner.png'
 
-export const pageNumber = reactive({
+export const store = reactive({
     questionPage: 0,
+    theEnd: false,
+    drop: false,
+    questionPageIsOpen: false,
+    timer: '10:00',
+    userData: null,
+    isLoading: false,
+    loadError: false,
 
     nextPage() {
         this.questionPage += 1
+        if (this.questionPage == 11) {
+            setTimeout(() => {
+                this.theEnd = true;
+                this.questionPageIsOpen = false;
+                this.runTimer()
+            }, 3000)
+        }
+    },
+    openCloseMenu() {
+        this.drop = !this.drop;
+    },
+    onMain() {
+        this.questionPageIsOpen = false;
+        this.drop = false;
+        this.theEnd = false;
+    },
+    openTest() {
+        if (this.questionPage < 11) {
+            this.questionPageIsOpen = true;
+        }
+        else this.theEnd = true;
+        this.drop = false;
+    },
+    closeEndPage() {
+        this.theEnd = false;
+        this.questionPageIsOpen = false;
+    },
+    redCall() {
+        console.log(this.timer)
+    },
+    runTimer() {
+        let ms = 600000;
+        let id = setInterval(() => {
+            if(!ms) clearInterval(id)
+            let d = new Date(ms);
+            this.timer = d.getMinutes() + ":" + (d.getSeconds().toString().length == 1 ? '0' + d.getSeconds() : d.getSeconds());
+                ms -= 1000;
+
+        }, 1000)
+    }, 
+    async getData() {
+        try {
+            this.userData = null;
+            this.loadError = false;
+            this.isLoading = true;
+            let response = await fetch('https://swapi.dev/api/people/1/')
+            let data = await response.json()
+            this.userData = data;
+            this.isLoading = false;
+            console.log(data)
+        } catch (error) {
+            this.isLoading = false;
+            this.loadError = true;
+            console.log(error)
+        }
     }
 })
 

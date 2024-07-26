@@ -1,18 +1,21 @@
 <script setup>
-
+import { store } from "../store/store.js";
 </script>
 
 <template>
-    <div class="sectionThree">
-        <div class="text">
-          <p>Также по результатам теста</p>
-          <p><strong>ВЫ ПОЛУЧИТЕ</strong> подробные советы по определению наиболее перспективной <strong>ДЛЯ ВАШЕГО ТИПА интеллекта СФЕРЫ ДЕЯТЕЛЬНОСТИ,</strong> </p>
-          <p>которая принесет вам скорейший финансовый результат.
-          </p>
-        </div>
-        <img class="img" src="../assets/img/brain.png" alt="">
-        <button class="test" @click="$emit('openTest', '')">ПОЙТИ ТЕСТ</button>
-      </div>
+  <div class="sectionThree">
+    <div class="text">
+      <p>Также по результатам теста</p>
+      <p>
+        <strong>ВЫ ПОЛУЧИТЕ</strong> подробные советы по определению наиболее
+        перспективной
+        <strong>ДЛЯ ВАШЕГО ТИПА интеллекта СФЕРЫ ДЕЯТЕЛЬНОСТИ,</strong>
+      </p>
+      <p>которая принесет вам скорейший финансовый результат.</p>
+    </div>
+    <img class="img" src="../assets/img/brain.png" alt="" />
+    <button class="test" @click="store.openTest()">ПОЙТИ ТЕСТ</button>
+  </div>
 </template>
 
 <style scoped>
@@ -42,15 +45,15 @@
 }
 
 .test {
-    margin-bottom: 1.5rem;
-    padding: 1rem 3rem;
-    background-color: var(--text-yellow);
-    border-radius: 50px;
-    font-family: "Merriweather", serif;
-    font-weight: 700;
-    font-style: normal;
-    font-size: 1.2rem;
-    color: black;
-    border: none;
-  }
+  margin-bottom: 1.5rem;
+  padding: 1rem 3rem;
+  background-color: var(--text-yellow);
+  border-radius: 50px;
+  font-family: "Merriweather", serif;
+  font-weight: 700;
+  font-style: normal;
+  font-size: 1.2rem;
+  color: black;
+  border: none;
+}
 </style>

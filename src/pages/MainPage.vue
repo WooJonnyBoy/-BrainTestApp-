@@ -6,37 +6,26 @@ import SectionFore from "../components/SectionFore.vue";
 import Header from "../components/Header.vue";
 import DropMenu from "../components/DropMenu.vue";
 import TestPage from '../pages/TestPage.vue'
-import { ref } from "vue";
-
-let drop = ref(false);
-let questionPageIsOpen = ref(false);
-
-const openCloseMenu = () => {
-  drop.value = !drop.value;
-};
-const onMain = () => {
-  questionPageIsOpen.value = false;
-  drop.value = false;
-}
-const openTest = () => {
-  questionPageIsOpen.value = true;
-  drop.value = false
-}
+import TheEndPage from '../pages/TheEndPage.vue'
+import { store } from '../store/store.js'
 
 </script>
 
 <template>
   <div class="container">
-    <div v-if="drop"><DropMenu @close="() => openCloseMenu()" @onMainPage="() => onMain()" @openTest="() => openTest()"/></div>
-    <Header @open="() => openCloseMenu()"/>
-    <div v-if="questionPageIsOpen">
+    <div v-if="store.drop"><DropMenu /></div>
+    <Header />
+    <div v-if="store.questionPageIsOpen">
       <TestPage />
     </div>
-    <div v-if="!questionPageIsOpen">
-      <SectionOne @openTest="() => openTest()"/>
+    <div v-if="store.theEnd">
+      <TheEndPage />
+    </div>
+    <div v-if="!store.questionPageIsOpen && !store.theEnd">
+      <SectionOne />
       <SectionTwo />
-      <SectionThree @openTest="() => openTest()"/>
-      <SectionFore @openTest="() => openTest()"/>
+      <SectionThree />
+      <SectionFore />
     </div>
   </div>
 </template>
