@@ -10,9 +10,11 @@ const setCheck = (val) => {
 };
 
 const next = () => {
+  store.setAnswers(questions[store.questionPage].question, checked.value)
   store.nextPage();
   checked.value = "";
 };
+
 </script>
 
 <template>

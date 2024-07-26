@@ -13,6 +13,7 @@ export const store = reactive({
     userData: null,
     isLoading: false,
     loadError: false,
+    answers: {},
 
     nextPage() {
         this.questionPage += 1
@@ -44,34 +45,37 @@ export const store = reactive({
         this.questionPageIsOpen = false;
         this.drop = false;
     },
-    redCall() {
-        console.log(this.timer)
-    },
     runTimer() {
         let ms = 600000;
         let id = setInterval(() => {
-            if(!ms) clearInterval(id)
+            if (!ms) clearInterval(id)
             let d = new Date(ms);
             this.timer = d.getMinutes() + ":" + (d.getSeconds().toString().length == 1 ? '0' + d.getSeconds() : d.getSeconds());
-                ms -= 1000;
+            ms -= 1000;
 
-        }, 1000)
-    }, 
+        }, 1000);
+    },
     async getData() {
         try {
             this.userData = null;
             this.loadError = false;
             this.isLoading = true;
             let response = await fetch('https://swapi.dev/api/people/1/')
-            let data = await response.json()
+            let data = await response.json();
             this.userData = data;
             this.isLoading = false;
-            console.log(data)
+            console.log(data);
         } catch (error) {
             this.isLoading = false;
             this.loadError = true;
-            console.log(error)
+            console.log(error);
         }
+    },
+    setAnswers(question, ans) {
+        this.answers[question] = ans;
+    },
+    getAnswers() {
+        return this.answers
     }
 })
 

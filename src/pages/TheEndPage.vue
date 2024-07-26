@@ -1,5 +1,7 @@
 <script setup>
 import { store } from "../store/store.js";
+
+console.log({ ...store.getAnswers()})
 </script>
 
 <template>
