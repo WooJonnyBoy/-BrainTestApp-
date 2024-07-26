@@ -42,6 +42,7 @@ export const store = reactive({
     closeEndPage() {
         this.theEnd = false;
         this.questionPageIsOpen = false;
+        this.drop = false;
     },
     redCall() {
         console.log(this.timer)
